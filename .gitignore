@@ -1,0 +1,17 @@
+**/.classpath
+**/.project
+**/target/
+**/.settings/
+**/coverage-report/
+**/metadata/
+.metadata/
+**/logs/
+logs/
+/.idea/
+*.iml
+.project
+.settings/
+**/out/
+**/output/
+**/.idea/
+**/.DS_Store
