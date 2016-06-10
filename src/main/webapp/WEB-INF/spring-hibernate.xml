@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx   
+        http://www.springframework.org/schema/tx/spring-tx.xsd"
+	default-init-method="init" default-destroy-method="destroy">
+	<!-- <aop:aspectj-autoproxy proxy-target-class="true" /> -->
+	<!-- 数据源配置 -->
+	<bean id="userDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/v_test" />
+		<property name="user" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	<!-- hibernate数据源访问接口 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<constructor-arg>
+			<ref bean="hibernateSessionFactory" />
+		</constructor-arg>
+	</bean>
+    <!-- hibernate配置 ,注意这里使用的是基于注解的SessionFactory, 它继承了LocalSessionFactoryBean-->
+	<bean id="hibernateSessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="userDataSource" />
+		<!-- 
+		<property name="namingStrategy">
+			<bean class="com.tvj.writedb.core.db.LocalNamingStrategy">
+				<property name="addUnderScores" value="true" />
+			</bean>
+		</property>
+		 -->
+		<property name="packagesToScan" value="org.evilcamp.v" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+	            </prop>
+	            <prop key="hibernate.show_sql">
+	            	true
+	            </prop>
+	            <!-- 
+				<prop key="hibernate.fetch_size">
+					${hibernate.writedb.fetch_size}
+	            </prop>
+				<prop key="hibernate.batch_size">
+					${hibernate.writedb.batch_size}
+	            </prop>
+				
+				<prop key="hibernate.format_sql">
+					${hibernate.writedb.format_sql}
+	            </prop>
+				<prop key="hibernate.use_sql_comments">
+					${hibernate.writedb.use_sql_comments}
+	            </prop>
+	            <prop key="hibernate.cache.use_query_cache">
+					${hibernate.writedb.cache.use_query_cache}
+                </prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					${hibernate.writedb.cache.use_second_level_cache}
+                </prop>
+                <prop key="hibernate.connection.release_mode">
+                    ${hibernate.writedb.connection.release_mode}
+                </prop>
+                 -->
+			</props>
+		</property>
+	</bean>
+</beans>

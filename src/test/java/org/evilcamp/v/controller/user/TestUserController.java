@@ -12,7 +12,7 @@ public class TestUserController extends TestBase{
 
     @Test
     public void testShowMe() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/user?name=xiaobai").servletPath("/user"))
-                .andExpect(status().isOk()).andExpect(content().string("xiaobai is welcome!"));
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/user?name=xiaoming").servletPath("/user"))
+                .andExpect(status().isOk()).andExpect(content().string("xiaoming is welcome!"));
     }
 }

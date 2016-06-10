@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx   
+        http://www.springframework.org/schema/tx/spring-tx.xsd"
+	default-init-method="init" default-destroy-method="destroy">
+	<!-- <aop:aspectj-autoproxy proxy-target-class="true" /> -->
+	<!-- 
+	    事务回滚问题, 
+	    事务能否回滚成功除了正确的配置事务范围，触发类型，代理类型之外，
+	    还与数据库的类型有关， 如mysql默认的MyIsAm和MEMORY引擎类型的表不支持事务，
+	    虽然spring会调用回滚命令，但是数据库是不会将刚提交的sql回滚的 
+		所以如果我们在mysql数据库上使用事务，一定要使用InnoDB或者其他支持事务的引擎类型创建的表 
+		另外spring默认情况下，只对Runtime和unchecked异常进行回滚,当然了你也可以自定义哪些异常需要回滚，哪些不会滚。
+		 
+		事务aop与自定义aop嵌套问题
+		事务aop包裹业务方法，自定义aop包裹事务aop，然后在自定义aop中捕获异常，
+		此时当业务方法抛出异常时，会首先被事务aop发现，此时可执行事务的回滚操作。
+		反之，若业务方法异常首先被自定义aop发现，则自定义aop会捕获异常，事务aop无法发现异常，不会执行事务回滚，会产生脏数据。
+		因此在事务aop和自定义aop有重叠时，一定要注意执行顺序，保证业务异常首先被事务aop发现，或者自定义aop中不要使用try-catch. 
+	-->
+	<!-- 事务aop配置 -->
+	<aop:config>
+		<!--配置切入点集合,com.sxf.db包以及子包下的所有方法都作为切入点 -->
+		<aop:pointcut id="hibernateMethods" expression="execution(* org.evilcamp.v.*.db..*.*(..))" />
+		<aop:advisor advice-ref="hibernateTxAdvice" pointcut-ref="hibernateMethods"
+			order="1" />
+	</aop:config>
+
+	<!-- 事务广播 -->
+	<tx:advice id="hibernateTxAdvice" transaction-manager="hibernateTxManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 事务管理器 -->
+	<bean id="hibernateTxManager"
+            class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    		<property name="sessionFactory" ref="hibernateSessionFactory"/>
+  	</bean>
+</beans>

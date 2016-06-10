@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug">
+    <Properties>
+        <Property name="log-path">../logs</Property>
+    </Properties>
+    <Appenders>
+        <RollingRandomAccessFile name="business-log" fileName="${log-path}/business.log" immediateFlush="true"
+                                 filePattern="${log-path}/business.log.%d{yyyyMMddHH}">
+            <PatternLayout>
+                <pattern>[%5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%F:%L] %X{reqId}%m %n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="error-log" fileName="${log-path}/error.log" immediateFlush="true"
+                                 filePattern="${log-path}/error.log.%d{yyyyMMddHH}">
+            <PatternLayout>
+                <pattern>[%5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%F:%L] %X{reqId}%m %n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+      		<PatternLayout pattern="[%5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%F:%L] %X{reqId}%m %n"/>
+    	</Console>
+    </Appenders>
+    <Loggers>
+        <AsyncLogger name="com.xiaoju.phoenix" level="debug" includeLocation="true">
+            <AppenderRef ref="business-log"/>
+            <AppenderRef ref="CONSOLE"/>
+        </AsyncLogger>
+        <AsyncRoot level="error" includeLocation="true">
+            <AppenderRef ref="error-log" level="error"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>

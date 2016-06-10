@@ -22,4 +22,8 @@
 	
     <!-- 启用mvc注解 -->
 	<mvc:annotation-driven />
+
+	<import resource="spring-hibernate.xml"/>
+	<import resource="spring-hibernate-transaction.xml"/>
+	<import resource="spring-aop.xml"/>
 </beans>
