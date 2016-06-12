@@ -1,4 +1,4 @@
-package org.evilcamp.v.business.db.hibernate;
+package org.evilcamp.v.business.security.role.dao.hibernate;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -7,8 +7,8 @@ import java.util.Date;
 
 
 @Entity
-@Table(name="permission")
-public class PermissionHibernateEntity {
+@Table(name="user")
+public class RoleHibernateEntity {
 
 	@Id
 	@GeneratedValue(generator="increment")
@@ -19,15 +19,11 @@ public class PermissionHibernateEntity {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "path")
-	private String path;
-
 	@Column(name = "remark")
 	private String remark;
 
 	@Column(name = "create_time")
 	private Date createTime;
-
 
 	public Date getCreateTime() {
 		return createTime;
@@ -53,14 +49,6 @@ public class PermissionHibernateEntity {
 		this.name = name;
 	}
 
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
-
 	public String getRemark() {
 		return remark;
 	}
@@ -71,11 +59,10 @@ public class PermissionHibernateEntity {
 
 	@Override
 	public String toString() {
-		return "PermissionHibernateEntity{" +
+		return "RoleHibernateEntity{" +
 				"createTime=" + createTime +
 				", id=" + id +
 				", name='" + name + '\'' +
-				", path='" + path + '\'' +
 				", remark='" + remark + '\'' +
 				'}';
 	}

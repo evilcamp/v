@@ -1,4 +1,4 @@
-package org.evilcamp.v.business.db.hibernate;
+package org.evilcamp.v.business.security.permission.dao.hibernate;
 
 import org.evilcamp.v.framework.db.hibernate.HibernateEntityDao;
 import org.hibernate.criterion.Criterion;
@@ -22,65 +22,66 @@ import java.util.List;
  * @since jdk 1.6,spring_web 1.0
  */
 @Repository
-public class RoleHibernateEntityDao extends HibernateEntityDao<RoleHibernateEntity> {
+public class PermissionHibernateEntityDao extends HibernateEntityDao<PermissionHibernateEntity> {
 	public void init(){
 		super.init();
 	}
-	
-	
+
+
 
 	public void queryByTemplate(){
-		List<RoleHibernateEntity> result = findByHibernateTemplate("from RoleHibernateEntity");
+		List<PermissionHibernateEntity> result = findByHibernateTemplate("from PermissionHibernateEntity");
 		if (result!=null&&result.size()>0) {
-			for (RoleHibernateEntity t : result) {
+			for (PermissionHibernateEntity t : result) {
 				System.out.println(t.toString());
 			}
 		}
 	}
-	
+
 	/**
 	 * queryUser.
 	 */
 	public void queryByHql(){
-		List<RoleHibernateEntity> result = findByHql("from RoleHibernateEntity");
+		List<PermissionHibernateEntity> result = findByHql("from PermissionHibernateEntity");
 		if (result!=null&&result.size()>0) {
-			for (RoleHibernateEntity t : result) {
+			for (PermissionHibernateEntity t : result) {
 				System.out.println(t.toString());
 			}
 		}
 	}
-	
+
 	public void queryByCriteria(){
 		List<Criterion> conditions = new ArrayList<Criterion>();
 		conditions.add(Restrictions.like("name", "x"));
 		conditions.add(Restrictions.eq("age", 17));
-		List<RoleHibernateEntity> result =findByCriteria(conditions);
+		List<PermissionHibernateEntity> result =findByCriteria(conditions);
 		if (result!=null&&result.size()>0) {
-			for (RoleHibernateEntity t : result) {
+			for (PermissionHibernateEntity t : result) {
 				System.out.println(t.toString());
 			}
 		}
-		
+
 	}
 	@SuppressWarnings("rawtypes")
 	public void queryByNativeSql(){
-		List result = findByNativeSql("select * from role");
+		List result = findByNativeSql("select * from permission");
 		if (result!=null&&result.size()>0) {
 			for (Object o : result) {
 				System.out.println(o.toString());
 			}
 		}
-		
+
 	}
-	
-	
+
+
 	/**
 	 * insert.
 	 */
 	public void insert(){
-		RoleHibernateEntity r = new RoleHibernateEntity();
+		PermissionHibernateEntity r = new PermissionHibernateEntity();
 		r.setName("role");
 		r.setRemark("remark");
+		r.setPath("/");
 		r.setCreateTime(new Date());
 		save(r);
 	}

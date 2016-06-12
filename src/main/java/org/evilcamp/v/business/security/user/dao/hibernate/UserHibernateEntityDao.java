@@ -1,8 +1,9 @@
-package org.evilcamp.v.business.db.hibernate;
+package org.evilcamp.v.business.security.user.dao.hibernate;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.evilcamp.v.framework.db.hibernate.HibernateEntityDao;
 import org.hibernate.criterion.Criterion;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Repository;
 
 
 /**
+ *
+ * 偏向于db层面的处理放在这里.
  * The Class UserEntityDao.
  * user查询类,
  * 若用户定义的Dao类继承HibernateEntityDao，要添加init初始化方法，务必要先调用一下父类的init方法，以完成泛型类型的写入。
@@ -87,19 +90,26 @@ public class UserHibernateEntityDao extends HibernateEntityDao<UserHibernateEnti
 	}
 
 
-	
-	
-	/**
-	 * insert.
-	 */
-	public void insert(){
-		UserHibernateEntity ue = new UserHibernateEntity();
-		ue.setUserName("user_"+System.currentTimeMillis());
-		ue.setPassword("123456");
-		ue.setRemark("test");
-		ue.setNickName("test01");
-		ue.setCreateTime(new Date());
-		save(ue);
+	public List<UserHibernateEntity> queryByLike(Map<String,Object> queryMap){
+		if(queryMap == null || queryMap.size() <= 0){
+			return null;
+		}
+		List<Criterion> conditions = new ArrayList<Criterion>();
+		for (Map.Entry<String,Object> entry: queryMap.entrySet()) {
+			conditions.add(Restrictions.like(entry.getKey(), "%"+entry.getValue()+"%"));
+		}
+		return findByCriteria(conditions);
+	}
+
+	public List<UserHibernateEntity> queryByEq(Map<String,Object> queryMap){
+		if(queryMap == null || queryMap.size() <= 0){
+			return null;
+		}
+		List<Criterion> conditions = new ArrayList<Criterion>();
+		for (Map.Entry<String,Object> entry: queryMap.entrySet()) {
+			conditions.add(Restrictions.eq(entry.getKey(), entry.getValue()));
+		}
+		return findByCriteria(conditions);
 	}
 
 }

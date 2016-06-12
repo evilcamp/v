@@ -1,41 +1,20 @@
-package org.evilcamp.v.business.controller.user;
+package org.evilcamp.v.business.security.controller;
 
 import org.evilcamp.v.business.common.SecurityUtil;
-import org.evilcamp.v.business.db.hibernate.UserHibernateEntityDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-/**
- * Created by suxiaofei on 2016-05-23
- */
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/security")
 
-    @Autowired
-    private UserHibernateEntityDao userHibernateEntityDao;
-
-
-
+public class SecurityController {
 
     @Autowired
     private SecurityUtil securityUtil;
-
-    @RequestMapping("/test")
-    @ResponseBody
-    public String showMe(String name){
-        return name+" is welcome!";
-    }
-
 
     /**
      * 前端通过写入cookie,
@@ -50,7 +29,7 @@ public class UserController {
      */
     @RequestMapping("/login")
     @ResponseBody
-    public String login(HttpServletRequest reqeust,String userName, String password){
+    public String login(HttpServletRequest reqeust, String userName, String password){
         boolean authenticateSuccess = securityUtil.authenticate(userName,password);
         if(authenticateSuccess){
             securityUtil.login(userName);
@@ -64,6 +43,6 @@ public class UserController {
     @ResponseBody
     public String logout(String userName){
         securityUtil.logout(userName);
-       return "success";
+        return "success";
     }
 }

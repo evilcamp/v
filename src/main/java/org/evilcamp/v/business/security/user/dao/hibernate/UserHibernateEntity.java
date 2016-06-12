@@ -1,4 +1,4 @@
-package org.evilcamp.v.business.db.hibernate;
+package org.evilcamp.v.business.security.user.dao.hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ public class UserHibernateEntity {
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
-	private long id;
+	private int id;
 
 
 	@Column(name = "user_name")
@@ -38,7 +38,6 @@ public class UserHibernateEntity {
 	private Date createTime;
 
 
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -47,11 +46,11 @@ public class UserHibernateEntity {
 		this.createTime = createTime;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

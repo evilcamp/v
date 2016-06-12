@@ -1,6 +1,6 @@
 package org.evilcamp.v.business.common;
 
-import org.evilcamp.v.business.db.hibernate.UserHibernateEntityDao;
+import org.evilcamp.v.business.security.user.dao.hibernate.UserHibernateEntityDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

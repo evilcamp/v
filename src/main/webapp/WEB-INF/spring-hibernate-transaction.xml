@@ -33,7 +33,7 @@
 	<!-- 事务aop配置 -->
 	<aop:config>
 		<!--配置切入点集合,com.sxf.db包以及子包下的所有方法都作为切入点 -->
-		<aop:pointcut id="hibernateMethods" expression="execution(* org.evilcamp.v.*.db..*.*(..))" />
+		<aop:pointcut id="hibernateMethods" expression="execution(* org.evilcamp.v.framework.db..*.*(..))" />
 		<aop:advisor advice-ref="hibernateTxAdvice" pointcut-ref="hibernateMethods"
 			order="1" />
 	</aop:config>
