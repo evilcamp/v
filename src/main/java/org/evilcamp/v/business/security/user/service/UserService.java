@@ -81,5 +81,16 @@ public class UserService {
     }
 
 
+    public List<UserDto> queryALL(){
+        List<UserHibernateEntity> entityList = dao.findByHql("from UserHibernateEntity");
+        List<UserDto> result = new ArrayList<UserDto>();
+        for (UserHibernateEntity entity: entityList) {
+            UserDto dto = new UserDto(entity);
+            result.add(dto);
+        }
+        return result;
+    }
+
+
 
 }

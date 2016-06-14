@@ -6,6 +6,7 @@ import org.evilcamp.v.business.security.user.dto.UserDto;
 import org.evilcamp.v.business.security.user.service.UserService;
 import org.evilcamp.v.framework.response.ReturnMsg;
 import org.evilcamp.v.framework.response.ReturnUtil;
+import org.evilcamp.v.framework.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -75,11 +76,10 @@ public class UserController {
             queryParams.put("nickName",nickName);
         }
         if(queryParams.size()<1){
-            return ReturnUtil.buildSuccessMsgStr();
+            return JsonUtils.getJsonString(service.queryALL());
         }else{
-            return ReturnUtil.buildSuccessMsgStr(service.queryByLike(queryParams));
+            return JsonUtils.getJsonString(service.queryByLike(queryParams));
         }
-
 
     }
 
@@ -95,13 +95,5 @@ public class UserController {
         service.update(entity);
         return ReturnUtil.buildSuccessMsgStr();
     }
-
-
-
-
-
-
-
-
 
 }
