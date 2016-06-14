@@ -1,4 +1,4 @@
-package org.evilcamp.v.utils;
+package org.evilcamp.v.framework.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

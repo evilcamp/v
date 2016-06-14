@@ -36,13 +36,19 @@ public class UserService {
             return null;
         }
 
-        UserHibernateEntity entity = new UserHibernateEntity();
-        entity.setUserName(userName);
-        entity.setPassword(password);
-        entity.setCreateTime(new Date());
-        entity.setNickName(nickName);
-        dao.save(entity);
-        return entity;
+        try{
+            UserHibernateEntity entity = new UserHibernateEntity();
+            entity.setUserName(userName);
+            entity.setPassword(password);
+            entity.setCreateTime(new Date());
+            entity.setNickName(nickName);
+            dao.save(entity);
+            return entity;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
     public void delete(String id){

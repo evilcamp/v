@@ -63,7 +63,7 @@
 				<!-- END AJAX-DROPDOWN -->
 			</div>
 
-			<span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">Already registered?</span> <a href="login.html" class="btn btn-danger">Sign In</a> </span>
+			<span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">已经注册?</span> <a href="login.html" class="btn btn-danger">登录</a> </span>
 
 		</header>
 
@@ -78,7 +78,7 @@
 						<div class="hero">
 
 							<div class="pull-left login-desc-box-l">
-								<h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
+								<h4 class="paragraph-header">这里的世界很精彩,这里值得你拥有!</h4>
 								<div class="login-app-icons">
 									<a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
 									<a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
@@ -91,15 +91,16 @@
 
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
+								<h5 class="about-heading">马太效应</h5>
 								<p>
-									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
+									马太效应（Matthew Effect），指强者愈强、弱者愈弱的现象，广泛应用于社会心理学、教育、金融以及科学领域。马太效应，是社会学家和经济学家们常用的术语，反映的社会现象是两极分化，富的更富，穷的更穷[1]  。名字来自圣经《新约·马太福音》一则寓言： “凡有的，还要加倍给他叫他多余；没有的，连他所有的也要夺过来”。
 								</p>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<h5 class="about-heading">Not just your average template!</h5>
+								<h5 class="about-heading">二八现象(管理学)</h5>
 								<p>
-									Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
+									通常一个企业80%的利润来自它20%的项目[3]  ；这个80/20定律被一再推而广之--经济学家说，20%的人手里掌握着80%的财富。有这样两种人，第一种占了80%，拥有20%的财富； 第二种只占20%，却掌握80%的财富。
+									<br>-漠视20%80%两者相关性，如同只认可喂饱口腹的最后一口饼子.
 								</p>
 							</div>
 						</div>
@@ -108,34 +109,40 @@
 					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 						<div class="well no-padding">
 
-							<form action="php/demo-register.php" id="smart-form-register" class="smart-form client-form">
+							<form action="/security/register" id="smart-form-register" class="smart-form client-form">
 								<header>
-									Registration is FREE*
+									免费注册*
 								</header>
 
 								<fieldset>
 									<section>
 										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="text" name="username" placeholder="Username">
-											<b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+											<input type="text" name="userName" placeholder="登录用户名">
+											<b class="tooltip tooltip-bottom-right">请填写登录用户名</b> </label>
 									</section>
 
 									<section>
 										<label class="input"> <i class="icon-append fa fa-envelope"></i>
-											<input type="email" name="email" placeholder="Email address">
-											<b class="tooltip tooltip-bottom-right">Needed to verify your account</b> </label>
+											<input type="text" name="nickName" placeholder="昵称">
+											<b class="tooltip tooltip-bottom-right">请填写你的昵称</b> </label>
+									</section>
+
+									<section>
+										<label class="input"> <i class="icon-append fa fa-envelope"></i>
+											<input type="email" name="email" placeholder="电子邮件地址">
+											<b class="tooltip tooltip-bottom-right">请填写邮箱地址</b> </label>
 									</section>
 
 									<section>
 										<label class="input"> <i class="icon-append fa fa-lock"></i>
-											<input type="password" name="password" placeholder="Password" id="password">
-											<b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
+											<input type="password" name="password" placeholder="密码" id="password">
+											<b class="tooltip tooltip-bottom-right">请记住并妥善保管您的登录密码</b> </label>
 									</section>
 
 									<section>
 										<label class="input"> <i class="icon-append fa fa-lock"></i>
-											<input type="password" name="passwordConfirm" placeholder="Confirm password">
-											<b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
+											<input type="password" name="passwordConfirm" placeholder="确认密码">
+											<b class="tooltip tooltip-bottom-right">请记住并妥善保管您的登录密码</b> </label>
 									</section>
 								</fieldset>
 
@@ -173,22 +180,22 @@
 									<section>
 										<label class="checkbox">
 											<input type="checkbox" name="subscription" id="subscription">
-											<i></i>I want to receive news and special offers</label>
+											<i></i>我愿意订阅相关通知</label>
 										<label class="checkbox">
 											<input type="checkbox" name="terms" id="terms">
-											<i></i>I agree with the <a href="#" data-toggle="modal" data-target="#myModal"> Terms and Conditions </a></label>
+											<i></i>我同意 <a href="#" data-toggle="modal" data-target="#myModal"> 相关条款 </a></label>
 									</section>
 								</fieldset>
 								<footer>
 									<button type="submit" class="btn btn-primary">
-										Register
+										注册
 									</button>
 								</footer>
 
 								<div class="message">
 									<i class="fa fa-check"></i>
 									<p>
-										Thank you for your registration!
+										感谢注册
 									</p>
 								</div>
 							</form>
@@ -479,12 +486,15 @@ Contractology supply a wide variety of commercial legal documents, such as <a hr
 
 					// Rules for form validation
 					rules : {
-						username : {
+						userName : {
+							required : true
+						},
+						nickName : {
 							required : true
 						},
 						email : {
-							required : true,
-							email : true
+							required : false,
+							email : false
 						},
 						password : {
 							required : true,
@@ -498,46 +508,49 @@ Contractology supply a wide variety of commercial legal documents, such as <a hr
 							equalTo : '#password'
 						},
 						firstname : {
-							required : true
+							required : false
 						},
 						lastname : {
-							required : true
+							required : false
 						},
 						gender : {
-							required : true
+							required : false
 						},
 						terms : {
-							required : true
+							required : false
 						}
 					},
 
 					// Messages for form validation
 					messages : {
-						login : {
-							required : 'Please enter your login'
+						userName : {
+							required : '请填写登录用户名'
+						},
+						nickName : {
+							required : '请填写昵称'
 						},
 						email : {
-							required : 'Please enter your email address',
-							email : 'Please enter a VALID email address'
+							required : '请填写您的电子邮件地址',
+							email : '请填写合法的电子邮件地址'
 						},
 						password : {
-							required : 'Please enter your password'
+							required : '请填写密码'
 						},
 						passwordConfirm : {
-							required : 'Please enter your password one more time',
-							equalTo : 'Please enter the same password as above'
+							required : '请再次填写密码',
+							equalTo : '两次填写的密码应该保持一致'
 						},
 						firstname : {
-							required : 'Please select your first name'
+							required : '请填写 first name'
 						},
 						lastname : {
-							required : 'Please select your last name'
+							required : '请选择 your last name'
 						},
 						gender : {
-							required : 'Please select your gender'
+							required : '请选择 your gender'
 						},
 						terms : {
-							required : 'You must agree with Terms and Conditions'
+							required : '您尚未同意相关条款'
 						}
 					},
 
@@ -559,19 +572,9 @@ Contractology supply a wide variety of commercial legal documents, such as <a hr
 			});
 		</script>
 
-		<!-- Your GOOGLE ANALYTICS CODE Below -->
+		<!-- 添加统计分析代码 Below -->
 		<script type="text/javascript">
-		
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-43548732-3']);
-		  _gaq.push(['_trackPageview']);
-		
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		
+
 		</script>
 
 	</body>

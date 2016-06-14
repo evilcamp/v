@@ -1,6 +1,8 @@
 package org.evilcamp.v.business.security.controller;
 
 import org.evilcamp.v.business.common.SecurityUtil;
+import org.evilcamp.v.business.security.user.service.UserService;
+import org.evilcamp.v.framework.response.ReturnUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,9 @@ public class SecurityController {
 
     @Autowired
     private SecurityUtil securityUtil;
+
+    @Autowired
+    private UserService service;
 
     /**
      * 前端通过写入cookie,
@@ -44,5 +49,16 @@ public class SecurityController {
     public String logout(String userName){
         securityUtil.logout(userName);
         return "success";
+    }
+
+    @RequestMapping("/register")
+    @ResponseBody
+    public String register(String userName,String password,String nickName){
+        if(service.add(userName,password,nickName)!=null){
+            securityUtil.login(userName);
+            return ReturnUtil.buildSuccessMsgStr();
+        }else{
+            return ReturnUtil.buillFailedMsgStr();
+        }
     }
 }

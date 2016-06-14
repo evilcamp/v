@@ -1,7 +1,7 @@
 package org.evilcamp.v.framework.aop;
 
 
-import org.evilcamp.v.utils.LogUtil;
+import org.evilcamp.v.framework.utils.LogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
