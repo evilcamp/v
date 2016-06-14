@@ -61,7 +61,7 @@
 				<span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
 			</div>
 
-			<span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">Need an account?</span> <a href="register.html" class="btn btn-danger">Create account</a> </span>
+			<span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">未注册?</span> <a href="register.html" class="btn btn-danger">注册</a> </span>
 
 		</header>
 
@@ -72,14 +72,14 @@
 
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
-						<h1 class="txt-color-red login-header-big">SmartAdmin</h1>
+						<h1 class="txt-color-red login-header-big">V</h1>
 						<div class="hero">
 
 							<div class="pull-left login-desc-box-l">
-								<h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
+								<h4 class="paragraph-header">这里的世界很精彩,这里值得你拥有!</h4>
 								<div class="login-app-icons">
-									<a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
-									<a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
+									<a href="javascript:void(0);" class="btn btn-danger btn-sm">开始体验</a>
+									<a href="javascript:void(0);" class="btn btn-danger btn-sm">分享</a>
 								</div>
 							</div>
 							
@@ -89,15 +89,16 @@
 
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
+								<h5 class="about-heading">马太效应</h5>
 								<p>
-									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
+									马太效应（Matthew Effect），指强者愈强、弱者愈弱的现象，广泛应用于社会心理学、教育、金融以及科学领域。马太效应，是社会学家和经济学家们常用的术语，反映的社会现象是两极分化，富的更富，穷的更穷[1] 。名字来自圣经《新约·马太福音》一则寓言： “凡有的，还要加倍给他叫他多余；没有的，连他所有的也要夺过来”。
 								</p>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<h5 class="about-heading">Not just your average template!</h5>
+								<h5 class="about-heading">二八现象(管理学)</h5>
 								<p>
-									Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
+									通常一个企业80%的利润来自它20%的项目[3]  ；这个80/20定律被一再推而广之--经济学家说，20%的人手里掌握着80%的财富。有这样两种人，第一种占了80%，拥有20%的财富； 第二种只占20%，却掌握80%的财富。
+									<br>-漠视20%80%两者相关性，如同只认可喂饱口腹的最后一口饼子.
 								</p>
 							</div>
 						</div>
@@ -105,39 +106,39 @@
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
 						<div class="well no-padding">
-							<form action="index.html" id="login-form" class="smart-form client-form">
+							<form action="" id="login-form" class="smart-form client-form">
 								<header>
-									Sign In
+									登录
 								</header>
 
 								<fieldset>
 									
 									<section>
-										<label class="label">E-mail</label>
+										<label class="label">登录用户</label>
 										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="email" name="email">
-											<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter email address/username</b></label>
+											<input type="text" name="userName">
+											<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> 请输入登录用户名</b></label>
 									</section>
 
 									<section>
-										<label class="label">Password</label>
+										<label class="label">密码</label>
 										<label class="input"> <i class="icon-append fa fa-lock"></i>
 											<input type="password" name="password">
-											<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
+											<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> 请输入密码</b> </label>
 										<div class="note">
-											<a href="forgotpassword.html">Forgot password?</a>
+											<a href="forgotpassword.html">忘记密码?</a>
 										</div>
 									</section>
 
 									<section>
 										<label class="checkbox">
 											<input type="checkbox" name="remember" checked="">
-											<i></i>Stay signed in</label>
+											<i></i>保持登录</label>
 									</section>
 								</fieldset>
 								<footer>
 									<button type="submit" class="btn btn-primary">
-										Sign in
+										登录
 									</button>
 								</footer>
 							</form>
@@ -187,6 +188,9 @@
 
 		<!-- JQUERY VALIDATE -->
 		<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+		<!-- JQUERY FORM -->
+		<script src="js/plugin/jquery-form/jquery-form.min.js"></script>
 		
 		<!-- JQUERY MASKED INPUT -->
 		<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
@@ -208,9 +212,8 @@
 				$("#login-form").validate({
 					// Rules for form validation
 					rules : {
-						email : {
-							required : true,
-							email : true
+						userName : {
+							required : true
 						},
 						password : {
 							required : true,
@@ -221,14 +224,24 @@
 
 					// Messages for form validation
 					messages : {
-						email : {
-							required : 'Please enter your email address',
-							email : 'Please enter a VALID email address'
+						userName : {
+							required : '请输入登录用户名'
 						},
 						password : {
-							required : 'Please enter your password'
+							required : '请输入密码'
 						}
 					},
+					// Ajax form submition
+					submitHandler : function(form) {
+						$(form).ajaxSubmit({
+							url:"/security/login",
+							success : function(data) {
+								//TODO:检查返回code,判断用户是否真正注册成功
+								location.href="admin.html#security/users.html";
+							}
+						});
+					},
+
 
 					// Do not change code below
 					errorPlacement : function(error, element) {
@@ -238,18 +251,9 @@
 			});
 		</script>
 
-		<!-- Your GOOGLE ANALYTICS CODE Below -->
+		<!-- 分析代码 Below -->
 		<script type="text/javascript">
-		
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-43548732-3']);
-		  _gaq.push(['_trackPageview']);
-		
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
+
 		
 		</script>
 
