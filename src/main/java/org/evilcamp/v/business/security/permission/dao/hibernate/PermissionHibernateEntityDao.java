@@ -3,6 +3,8 @@ package org.evilcamp.v.business.security.permission.dao.hibernate;
 import org.evilcamp.v.framework.db.hibernate.HibernateEntityDao;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -23,6 +25,8 @@ import java.util.List;
  */
 @Repository
 public class PermissionHibernateEntityDao extends HibernateEntityDao<PermissionHibernateEntity> {
+
+	private static final Logger logger = LoggerFactory.getLogger(PermissionHibernateEntityDao.class);
 	public void init(){
 		super.init();
 	}
@@ -33,7 +37,7 @@ public class PermissionHibernateEntityDao extends HibernateEntityDao<PermissionH
 		List<PermissionHibernateEntity> result = findByHibernateTemplate("from PermissionHibernateEntity");
 		if (result!=null&&result.size()>0) {
 			for (PermissionHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 	}
@@ -45,7 +49,7 @@ public class PermissionHibernateEntityDao extends HibernateEntityDao<PermissionH
 		List<PermissionHibernateEntity> result = findByHql("from PermissionHibernateEntity");
 		if (result!=null&&result.size()>0) {
 			for (PermissionHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 	}
@@ -57,7 +61,7 @@ public class PermissionHibernateEntityDao extends HibernateEntityDao<PermissionH
 		List<PermissionHibernateEntity> result =findByCriteria(conditions);
 		if (result!=null&&result.size()>0) {
 			for (PermissionHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 
@@ -67,7 +71,7 @@ public class PermissionHibernateEntityDao extends HibernateEntityDao<PermissionH
 		List result = findByNativeSql("select * from permission");
 		if (result!=null&&result.size()>0) {
 			for (Object o : result) {
-				System.out.println(o.toString());
+				logger.info(o.toString());
 			}
 		}
 

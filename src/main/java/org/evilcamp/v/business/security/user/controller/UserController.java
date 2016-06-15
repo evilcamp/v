@@ -4,9 +4,12 @@ import org.evilcamp.v.business.security.user.dao.hibernate.UserHibernateEntity;
 import org.evilcamp.v.business.security.user.dao.hibernate.UserHibernateEntityDao;
 import org.evilcamp.v.business.security.user.dto.UserDto;
 import org.evilcamp.v.business.security.user.service.UserService;
-import org.evilcamp.v.framework.response.ReturnMsg;
+import org.evilcamp.v.framework.common.FrameworkContext;
 import org.evilcamp.v.framework.response.ReturnUtil;
-import org.evilcamp.v.framework.utils.JsonUtils;
+import org.evilcamp.v.framework.utils.JsonUtil;
+import org.evilcamp.v.framework.utils.StringTool;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -15,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +28,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserHibernateEntityDao userHibernateEntityDao;
@@ -46,15 +50,15 @@ public class UserController {
     @ResponseBody
     public String delete(HttpServletRequest reqeust, HttpServletResponse response,
                         String id,String userName){
-        if(!StringUtils.hasText(id) && !StringUtils.hasText(userName)){
+        if(!StringTool.hasText(id) && !StringTool.hasText(userName)){
             return ReturnUtil.buillFailedMsgStr();
         }
-        if(StringUtils.hasText(id)){
+        if(StringTool.hasText(id)){
             service.delete(id);
             return ReturnUtil.buildSuccessMsgStr();
         }
 
-        if(StringUtils.hasText(userName)){
+        if(StringTool.hasText(userName)){
             UserDto dto = service.getByUserName(userName);
             if(dto!=null){
                 service.delete(dto.getId());
@@ -68,17 +72,18 @@ public class UserController {
     @ResponseBody
     public String query(HttpServletRequest reqeust, HttpServletResponse response,
                          String id,String userName,String nickName){
+        FrameworkContext.getRootConfigDir();
         Map<String,Object> queryParams = new HashMap<String,Object>();
-        if(StringUtils.hasText(userName)){
+        if(StringTool.hasText(userName)){
             queryParams.put("userName",userName);
         }
-        if(StringUtils.hasText(nickName)){
+        if(StringTool.hasText(nickName)){
             queryParams.put("nickName",nickName);
         }
         if(queryParams.size()<1){
-            return JsonUtils.getJsonString(service.queryALL());
+            return JsonUtil.getJsonString(service.queryALL());
         }else{
-            return JsonUtils.getJsonString(service.queryByLike(queryParams));
+            return JsonUtil.getJsonString(service.queryByLike(queryParams));
         }
 
     }

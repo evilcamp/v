@@ -25,14 +25,14 @@ public class UserService {
     }
 
     public UserHibernateEntity add(String userName, String password,String nickName){
-        if(!StringUtils.hasText(userName)){
+        if(!StringTool.hasText(userName)){
             return null;
         }
-        if(!StringUtils.hasText(password)){
+        if(!StringTool.hasText(password)){
             return null;
         }
 
-        if(!StringUtils.hasText(nickName)){
+        if(!StringTool.hasText(nickName)){
             return null;
         }
 

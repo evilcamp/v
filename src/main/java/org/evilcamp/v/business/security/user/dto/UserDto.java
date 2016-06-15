@@ -1,13 +1,7 @@
 package org.evilcamp.v.business.security.user.dto;
 
 import org.evilcamp.v.business.security.user.dao.hibernate.UserHibernateEntity;
-import org.evilcamp.v.framework.utils.DateUtils;
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
+import org.evilcamp.v.framework.utils.DateUtil;
 
 public class UserDto {
 
@@ -29,7 +23,7 @@ public class UserDto {
         this.password = entity.getPassword();
         this.nickName = entity.getNickName();
         this.remark = entity.getRemark();
-        this.createTime = DateUtils.getCommonFormat(entity.getCreateTime());
+        this.createTime = DateUtil.getCommonFormat(entity.getCreateTime());
     }
 
     public String getCreateTime() {

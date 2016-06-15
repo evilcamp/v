@@ -22,7 +22,7 @@
 	<!-- 配置aop,用户自定义切面，主要注意与db事务的执行顺序 -->
 	<aop:config>
 		<aop:aspect ref="securityAopXml" order="0">
-			<aop:pointcut id="userPointCut" expression="execution(* org.evilcamp.v.business.controller..*.*(..))" />
+			<aop:pointcut id="userPointCut" expression="execution(* org.evilcamp.v.business.security.*.controller..*.*(..))" />
 			<aop:around method="doAround" pointcut-ref="userPointCut" />
 		</aop:aspect>
 	</aop:config>

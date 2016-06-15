@@ -1,6 +1,6 @@
 package org.evilcamp.v.framework.response;
 
-import org.evilcamp.v.framework.utils.JsonUtils;
+import org.evilcamp.v.framework.utils.JsonUtil;
 
 public class ReturnUtil {
 
@@ -22,17 +22,17 @@ public class ReturnUtil {
     }
 
     public static String buildSuccessMsgStr(){
-        return JsonUtils.getJsonString(ReturnUtil.buildSuccessMsg());
+        return JsonUtil.getJsonString(ReturnUtil.buildSuccessMsg());
     }
 
     public static String buildSuccessMsgStr(Object data){
         ReturnMsg result = ReturnUtil.buildSuccessMsg();
         result.setData(data);
-        return JsonUtils.getJsonString(result);
+        return JsonUtil.getJsonString(result);
     }
 
     public static String buillFailedMsgStr(){
-        return JsonUtils.getJsonString(ReturnUtil.buillFailedMsg());
+        return JsonUtil.getJsonString(ReturnUtil.buillFailedMsg());
     }
 
 

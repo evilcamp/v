@@ -3,7 +3,7 @@ package org.evilcamp.v.framework.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateUtils {
+public class DateUtil {
 
     public static String getCommonFormat(Date date){
         if(date==null){

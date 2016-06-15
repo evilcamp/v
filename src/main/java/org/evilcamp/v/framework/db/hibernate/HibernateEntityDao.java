@@ -53,13 +53,13 @@ public class HibernateEntityDao<T> extends HibernateBaseDao<T> {
 			// 检查T泛型信息
 			if(!className.equals("T")){
 				entityClass = (Class)p[0];
-				System.out.println("未发现泛型T");
-				System.out.println("获取泛型" + (Class)p[0]);
+				logger.info("未发现泛型T");
+				logger.info("获取泛型" + (Class)p[0]);
 			}else{
-				System.out.println("发现泛型T");
+				logger.info("发现泛型T");
 			}
 		} else {
-			System.out.println("类型不匹配1...");
+			logger.info("类型不匹配1...");
 		}
 
 	}

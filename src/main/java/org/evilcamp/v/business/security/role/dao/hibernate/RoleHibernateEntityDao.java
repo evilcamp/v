@@ -3,6 +3,8 @@ package org.evilcamp.v.business.security.role.dao.hibernate;
 import org.evilcamp.v.framework.db.hibernate.HibernateEntityDao;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ import java.util.List;
  */
 @Repository
 public class RoleHibernateEntityDao extends HibernateEntityDao<RoleHibernateEntity> {
+	private static final Logger logger = LoggerFactory.getLogger(RoleHibernateEntityDao.class);
 	public void init(){
 		super.init();
 	}
@@ -33,7 +36,7 @@ public class RoleHibernateEntityDao extends HibernateEntityDao<RoleHibernateEnti
 		List<RoleHibernateEntity> result = findByHibernateTemplate("from RoleHibernateEntity");
 		if (result!=null&&result.size()>0) {
 			for (RoleHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 	}
@@ -45,7 +48,7 @@ public class RoleHibernateEntityDao extends HibernateEntityDao<RoleHibernateEnti
 		List<RoleHibernateEntity> result = findByHql("from RoleHibernateEntity");
 		if (result!=null&&result.size()>0) {
 			for (RoleHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 	}
@@ -57,7 +60,7 @@ public class RoleHibernateEntityDao extends HibernateEntityDao<RoleHibernateEnti
 		List<RoleHibernateEntity> result =findByCriteria(conditions);
 		if (result!=null&&result.size()>0) {
 			for (RoleHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 
@@ -67,7 +70,7 @@ public class RoleHibernateEntityDao extends HibernateEntityDao<RoleHibernateEnti
 		List result = findByNativeSql("select * from role");
 		if (result!=null&&result.size()>0) {
 			for (Object o : result) {
-				System.out.println(o.toString());
+				logger.info(o.toString());
 			}
 		}
 

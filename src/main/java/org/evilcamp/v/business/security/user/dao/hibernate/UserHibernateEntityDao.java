@@ -8,6 +8,8 @@ import java.util.Map;
 import org.evilcamp.v.framework.db.hibernate.HibernateEntityDao;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 
@@ -26,6 +28,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserHibernateEntityDao extends HibernateEntityDao<UserHibernateEntity> {
+
+	private static final Logger logger = LoggerFactory.getLogger(UserHibernateEntityDao.class);
 	public void init(){
 		super.init();
 	}
@@ -36,7 +40,7 @@ public class UserHibernateEntityDao extends HibernateEntityDao<UserHibernateEnti
 		List<UserHibernateEntity> result = findByHibernateTemplate("from UserHibernateEntity");
 		if (result!=null&&result.size()>0) {
 			for (UserHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 	}
@@ -48,7 +52,7 @@ public class UserHibernateEntityDao extends HibernateEntityDao<UserHibernateEnti
 		List<UserHibernateEntity> result = findByHql("from UserHibernateEntity");
 		if (result!=null&&result.size()>0) {
 			for (UserHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 	}
@@ -60,7 +64,7 @@ public class UserHibernateEntityDao extends HibernateEntityDao<UserHibernateEnti
 		List<UserHibernateEntity> result =findByCriteria(conditions);
 		if (result!=null&&result.size()>0) {
 			for (UserHibernateEntity t : result) {
-				System.out.println(t.toString());
+				logger.info(t.toString());
 			}
 		}
 		
@@ -70,7 +74,7 @@ public class UserHibernateEntityDao extends HibernateEntityDao<UserHibernateEnti
 		List result = findByNativeSql("select * from user");
 		if (result!=null&&result.size()>0) {
 			for (Object o : result) {
-				System.out.println(o.toString());
+				logger.info(o.toString());
 			}
 		}
 		

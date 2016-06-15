@@ -2,6 +2,8 @@ package org.evilcamp.v.business.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -12,38 +14,40 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(1)
 public class SecurityAopAn {
+
+    private static final Logger logger = LoggerFactory.getLogger(SecurityAopAn.class);
     /**
      * 扫描某包或子包下的方法.
      */
     @Pointcut("within(org.evilcamp.v.business..*)")
     public void inPackageAndSubPackage() {
-        System.out.println("do inPackageAndSubPackage");
+        logger.info("do inPackageAndSubPackage");
     }
 
     @Before("within(org.evilcamp.v.business..*)")
     public void doBefore(){
-        System.out.println("UserAspect do before");
+        logger.info("UserAspect do before");
     }
 
     @After("within(org.evilcamp.v.business..*)")
     public void doAfter(){
-        System.out.println("UserAspect do after");
+        logger.info("UserAspect do after");
     }
 
     @AfterThrowing("within(org.evilcamp.v.business..*)")
     public void doAfterThrow(){
-        System.out.println("例外通知");
+        logger.info("例外通知");
     }
 
     @Around("within(org.evilcamp.v.business..*)")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable{
-        System.out.println("aop-annotation:doAround start");
+        logger.info("aop-annotation:doAround start");
         long beginTime = System.currentTimeMillis();
         //执行该方法
         Object object = pjp.proceed();
         long endTime = System.currentTimeMillis();
-        System.out.println("aop-annotation:doAround Method:<"+pjp.getSignature().getDeclaringTypeName()+"."+pjp.getSignature().getName()+">耗时"+(endTime-beginTime)+"ms");
-        System.out.println("aop-annotation:doAround end");
+        logger.info("aop-annotation:doAround Method:<"+pjp.getSignature().getDeclaringTypeName()+"."+pjp.getSignature().getName()+">耗时"+(endTime-beginTime)+"ms");
+        logger.info("aop-annotation:doAround end");
         return object;
     }
 }
