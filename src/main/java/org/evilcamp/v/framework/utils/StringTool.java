@@ -9,6 +9,6 @@ import org.springframework.util.StringUtils;
 public class StringTool {
 
     public static boolean hasText(String text){
-        return StringTool.hasText(text);
+        return StringUtils.hasText(text);
     }
 }

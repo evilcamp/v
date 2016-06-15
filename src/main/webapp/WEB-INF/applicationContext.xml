@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
@@ -14,7 +15,9 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx   
-        http://www.springframework.org/schema/tx/spring-tx.xsd"
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task.xsd"
 	default-init-method="init" default-destroy-method="destroy">
 	<!-- <aop:aspectj-autoproxy proxy-target-class="true" /> -->
 	<!-- 组件扫描范围 -->
@@ -22,6 +25,12 @@
 	
     <!-- 启用mvc注解 -->
 	<mvc:annotation-driven />
+	<mvc:interceptors>
+		<ref bean="requestInterceptor" />
+	</mvc:interceptors>
+
+	<!-- 启用定时器注解 -->
+	<task:annotation-driven/>
 
 	<import resource="spring-hibernate.xml"/>
 	<import resource="spring-hibernate-transaction.xml"/>

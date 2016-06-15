@@ -25,7 +25,7 @@ public class WebInitListenter extends ContextLoaderListener {
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		super.contextInitialized(event);
-		FrameworkContext.getRootConfigDir();
+		FrameworkContext.init();
 
 		logger.info("spring contextInitialized start.");
 

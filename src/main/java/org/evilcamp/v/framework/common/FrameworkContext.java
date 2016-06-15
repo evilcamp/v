@@ -1,6 +1,9 @@
 package org.evilcamp.v.framework.common;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.spi.LoggerContext;
 import org.evilcamp.v.framework.exception.VException;
+import org.evilcamp.v.framework.utils.StringTool;
 import org.springframework.util.StringUtils;
 
 import java.io.File;
@@ -51,7 +54,8 @@ public class FrameworkContext {
 
 
     public static void init(){
-
+        System.setProperty("log4j.configurationFile",rootConfigDir+"log4j2.xml");
+        LoggerContext context =(LoggerContext) LogManager.getContext(false);
 
 
     }

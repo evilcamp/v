@@ -3,6 +3,7 @@ package org.evilcamp.v.business.security.user.service;
 import org.evilcamp.v.business.security.user.dao.hibernate.UserHibernateEntity;
 import org.evilcamp.v.business.security.user.dao.hibernate.UserHibernateEntityDao;
 import org.evilcamp.v.business.security.user.dto.UserDto;
+import org.evilcamp.v.framework.utils.StringTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
